@@ -12,7 +12,7 @@ A make.fun bounty entry for [The One-Line Excuse Championship](https://make.fun/
 
 ## How it works
 
-`main.py` (Python 3.13, standard library only) writes exactly that one line to `/output/entry.txt`. No network, no dependencies, deterministic — the same bytes on every run.
+`main.py` (Python 3.13, standard library only) writes exactly that one line to `/output/entry.txt`. No network, no dependencies, deterministic — the same bytes on every run. Before writing, it gates the entry against the bounty contract (one line, 78 chars, ends with a period) and verifies the file's sha256; the write itself is atomic (temp file + rename) with a read-back check.
 
 ```sh
 python3 main.py
